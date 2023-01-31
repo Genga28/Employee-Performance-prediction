@@ -1,15 +1,18 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
+import os
 
 app = Flask(__name__)
-model = pickle.load(open('C:\\Users\\kgeng\\Downloads\\Employee Performance Analysis\\Employee Performance Analysis\\mlp_classifier_model.pkl', 'rb'))
+model = pickle.load(open('mlp_classifier_model.pkl', 'rb'))
+
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+
+@app.route('/predict', methods=['POST'])
 def predict():
     '''
     For rendering results on HTML GUI
@@ -20,18 +23,9 @@ def predict():
 
     output = round(prediction[0], 2)
 
-    return render_template('index.html', prediction_text='Performance Rating will be $ {}'.format(output))
+    return render_template('index.html', prediction_text='Performance Rating will be {}'.format(output))
 
-@app.route('/predict_api',methods=['POST'])
-def predict_api():
-    '''
-    For direct API calls trought request
-    '''
-    data = request.get_json(force=True)
-    prediction = model.predict([np.array(list(data.values()))])
-
-    output = prediction[0]
-    return jsonify(output)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)

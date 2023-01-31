@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+      <meta charset="UTF-8">
+      <title>ML API</title>
+      <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+      <br>
+      <br>
+      <center>
+            <h1>PREDICT PERFORMANCE RATING</h1>
+      </center>
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+            <div class="left1">
+                  <input type="text" name="age" placeholder="Age" required="required" />
+                  <input type="text" name="gender" placeholder="Gender" required="required" />
+                  <input type="text" name="edu_bg" placeholder="Educational Background" required="required" />
+                  <input type="text" name="marital_stat" placeholder="Marital Status" required="required" />
+                  <input type="text" name="emp_dept" placeholder="Employee Department" required="required" />
+            </div>
+            <div class="left2">
+                  <input type="text" name="emp_job_role" placeholder="Employee Job Role" required="required" />
+                  <input type="text" name="BusinessTravelFrequency" placeholder="BusinessTravelFrequency"
+                        required="required" />
+                  <input type="text" name="DistanceFromHome" placeholder="DistanceFromHome" required="required" />
+                  <input type="text" name="EmpEducationLevel" placeholder="EmpEducationLevel" required="required" />
+                  <input type="text" name="EmpEnvironmentSatisfaction" placeholder="EmpEnvironmentSatisfaction"
+                        required="required" />
+            </div>
+            <div class="left3">
+                  <input type="text" name="EmpHourlyRate" placeholder="EmpHourlyRate" required="required" />
+                  <input type="text" name="EmpJobInvolvement" placeholder="EmpJobInvolvement" required="required" />
+                  <input type="text" name="EmpJobLevel" placeholder="EmpJobLevel" required="required" />
+                  <input type="text" name="EmpJobSatisfaction" placeholder="EmpJobSatisfaction" required="required" />
+                  <input type="text" name="NumCompaniesWorked" placeholder="NumCompaniesWorked" required="required" />
+            </div>
+            <div class="left4">
+                  <input type="text" name="OverTime" placeholder="OverTime" required="required" />
+                  <input type="text" name="EmpLastSalaryHikePercent" placeholder="EmpLastSalaryHikePercent"
+                        required="required" />
+                  <input type="text" name="EmpRelationshipSatisfaction" placeholder="EmpRelationshipSatisfaction"
+                        required="required" />
+                  <input type="text" name="TotalWorkExperienceInYears" placeholder="TotalWorkExperienceInYears"
+                        required="required" />
+                  <input type="text" name="TrainingTimesLastYear" placeholder="TrainingTimesLastYear"
+                        required="required" />
+            </div>
+            <div class="left5">
+                  <input type="text" name="EmpWorkLifeBalance" placeholder="EmpWorkLifeBalance" required="required" />
+                  <input type="text" name="ExperienceYearsAtThisCompany" placeholder="ExperienceYearsAtThisCompany"
+                        required="required" />
+                  <input type="text" name="ExperienceYearsInCurrentRole" placeholder="ExperienceYearsInCurrentRole"
+                        required="required" />
+                  <input type="text" name="YearsWithCurrManager" placeholder="YearsWithCurrManager"
+                        required="required" />
+                  <input type="text" name="Attrition" placeholder="Attrition" required="required" />
+            </div>
+            <div class="btcen">
+                  <center> <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button> </center>
+                  <br>
+                  <center>{{ prediction_text }} </center>
+            </div>
+      </form>
+
+      <br>
+      <br>
+
+
+
+
+
+</body>
+
+</html>
